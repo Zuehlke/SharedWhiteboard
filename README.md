@@ -32,7 +32,7 @@ See the [CONTRIBUTING] document.
 Thank you, [contributors]!
 
   [CONTRIBUTING]: CONTRIBUTING.md
-  [contributors]: https://github.com/zuehlke/SharedWhitebaord/graphs/contributors
+  [contributors]: https://github.com/zuehlke/SharedWhiteboard/graphs/contributors
 
 ## License
 
