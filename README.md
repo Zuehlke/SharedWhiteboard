@@ -40,7 +40,7 @@ Thank you, [contributors]!
 It is free software, and may be redistributed
 under the terms specified in the [LICENSE] file.
 
-  [LICENSE]: /LICENSE
+  [LICENSE]: /LICENSE.txt
 
 ## About
 
