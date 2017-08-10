@@ -3,3 +3,9 @@
 /QCAR
 /.vs
 /HoloLensApp/.vs
+/WebApp/Debug
+/WebApp/.vs
+/WebApp/x64
+/HoloLensApp/App/SharedWhiteboard/obj
+/HoloLensApp/App/SharedWhiteboard/bin
+/HoloLensApp/App
