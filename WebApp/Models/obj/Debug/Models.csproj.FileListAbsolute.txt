@@ -1,0 +1,7 @@
+C:\Projects\SharedWhiteBoard\Models\bin\Debug\Models.dll.config
+C:\Projects\SharedWhiteBoard\Models\bin\Debug\Models.dll
+C:\Projects\SharedWhiteBoard\Models\bin\Debug\Models.pdb
+C:\Projects\SharedWhiteBoard\Models\bin\Debug\AForge.dll
+C:\Projects\SharedWhiteBoard\Models\bin\Debug\AForge.xml
+C:\Projects\SharedWhiteBoard\Models\obj\Debug\Models.dll
+C:\Projects\SharedWhiteBoard\Models\obj\Debug\Models.pdb

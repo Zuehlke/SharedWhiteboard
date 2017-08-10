@@ -1,0 +1,8 @@
+C:\Projects\SharedWhiteBoard\Models\bin\Release\Models.dll.config
+C:\Projects\SharedWhiteBoard\Models\bin\Release\Models.dll
+C:\Projects\SharedWhiteBoard\Models\bin\Release\Models.pdb
+C:\Projects\SharedWhiteBoard\Models\bin\Release\AForge.dll
+C:\Projects\SharedWhiteBoard\Models\bin\Release\AForge.xml
+C:\Projects\SharedWhiteBoard\Models\obj\Release\Models.csprojResolveAssemblyReference.cache
+C:\Projects\SharedWhiteBoard\Models\obj\Release\Models.dll
+C:\Projects\SharedWhiteBoard\Models\obj\Release\Models.pdb

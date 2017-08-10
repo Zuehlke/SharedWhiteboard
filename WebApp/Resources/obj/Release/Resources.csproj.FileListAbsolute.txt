@@ -1,0 +1,7 @@
+C:\Projects\SharedWhiteBoard\Resources\bin\Release\Resources.dll.config
+C:\Projects\SharedWhiteBoard\Resources\bin\Release\Resources.dll
+C:\Projects\SharedWhiteBoard\Resources\bin\Release\Resources.pdb
+C:\Projects\SharedWhiteBoard\Resources\obj\Release\Resources.Resources.resources
+C:\Projects\SharedWhiteBoard\Resources\obj\Release\Resources.csproj.GenerateResource.Cache
+C:\Projects\SharedWhiteBoard\Resources\obj\Release\Resources.dll
+C:\Projects\SharedWhiteBoard\Resources\obj\Release\Resources.pdb

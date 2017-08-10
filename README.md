@@ -24,7 +24,7 @@ Now, you can start sharing.
 Whenever you are in good position to send your content (whiteboard frame is green), you can say "Send" and your content will be sent to other user.
 
 
-  [GENERATEDAPP]: ./GeneratedApp
+  [GENERATEDAPP]: ./HoloLensApp/GeneratedApp
 
 ## Contributing
 
@@ -44,7 +44,7 @@ under the terms specified in the [LICENSE] file.
 
 ## About
 
-**Shared Whiteboard** is maintained by Bojan Jelaca and Stefan Kostic.
+**Shared Whiteboard** is maintained by [Bojan Jelaca](mailto:bojan.jelaca@zuehlke.com) and [Stefan Kostic](mailto:stefan.kostic@zuehlke.com).
 
 ![Zuehlke](https://avatars2.githubusercontent.com/u/10219568?v=3&s=100)
 
