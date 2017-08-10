@@ -1,6 +1,0 @@
-Parameter is not valid.   at System.Drawing.Bitmap..ctor(Int32 width, Int32 height, PixelFormat format)
-   at AForge.Imaging.Filters.BaseTransformationFilter.Apply(BitmapData imageData)
-   at AForge.Imaging.Filters.BaseTransformationFilter.Apply(Bitmap image)
-   at WhiteBoardDetection.CornerFinderAccordingToColors.Find(Bitmap image, Bitmap template1, Bitmap template2, Bitmap template3, Bitmap template4) in C:\Projects\SharedWhiteBoard\WhiteBoardDetection\CornerFinderAccordingToColors.cs:line 106
-   at WhiteBoardDetection.WhiteBoardExtractor.DetectAndCrop(String storageFolder) in C:\Projects\SharedWhiteBoard\WhiteBoardDetection\WhiteBoardExtractor.cs:line 40
-   at SharedWhiteBoard.Controllers.ImageController.<UploadImage>d__0.MoveNext() in C:\Projects\SharedWhiteBoard\SharedWhiteBoard\Controllers\ImageController.cs:line 29

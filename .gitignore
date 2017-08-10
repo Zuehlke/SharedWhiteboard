@@ -4,3 +4,7 @@
 /WebApp/.vs
 /WebApp/x64
 /HoloLensApp/App
+bin/
+obj/
+obj
+bin

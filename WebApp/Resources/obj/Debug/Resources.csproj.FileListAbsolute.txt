@@ -1,8 +1,0 @@
-C:\Projects\SharedWhiteBoard\Resources\obj\Debug\Resources.Resources.resources
-C:\Projects\SharedWhiteBoard\Resources\obj\Debug\Resources.csproj.GenerateResource.Cache
-C:\Projects\SharedWhiteBoard\Resources\bin\Debug\Resources.dll.config
-C:\Projects\SharedWhiteBoard\Resources\bin\Debug\Resources.dll
-C:\Projects\SharedWhiteBoard\Resources\bin\Debug\Resources.pdb
-C:\Projects\SharedWhiteBoard\Resources\obj\Debug\Resources.dll
-C:\Projects\SharedWhiteBoard\Resources\obj\Debug\Resources.pdb
-C:\Projects\SharedWhiteBoard\Resources\obj\Debug\Resources.csprojResolveAssemblyReference.cache
