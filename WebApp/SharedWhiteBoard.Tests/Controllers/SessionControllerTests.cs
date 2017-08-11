@@ -22,7 +22,6 @@ using Moq;
 using NUnit.Framework;
 using Services.Interfaces;
 using SharedWhiteBoard.Controllers;
-using SharedWhiteBoard.Models;
 
 namespace SharedWhiteBoard.Tests.Controllers
 {
