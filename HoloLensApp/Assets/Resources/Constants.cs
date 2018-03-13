@@ -20,6 +20,7 @@ namespace Assets.Resources
     public static class Constants
     {
         public const string ApplicationUrl = "http://distributedwhiteboard.azurewebsites.net";
+        //public const string ApplicationUrl = "http://localhost:6364";
 
         public const string ConnectToExistingSessionUrl = "{0}/SessionApi/Session/Pin{1}";
 

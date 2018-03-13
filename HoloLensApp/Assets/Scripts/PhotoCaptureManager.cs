@@ -16,7 +16,9 @@
 //
 
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using HoloToolkit.Unity;
 using UnityEngine;
@@ -32,7 +34,10 @@ namespace Assets.Scripts
 
         public UserOutputManager UserOutputManager;
 
-        public GameObject WhiteBoard;
+        public GameObject UpperLeft;
+        public GameObject UpperRight;
+        public GameObject BottomLeft;
+        public GameObject BottomRight;
 
         public void CapturePhoto()
         {
@@ -54,6 +59,8 @@ namespace Assets.Scripts
                 pixelFormat = CapturePixelFormat.BGRA32
             };
 
+            UserOutputManager.ShowOutput(string.Format("w: {0}, h: {1}", cameraResolution.width, cameraResolution.height));
+
             captureobject.StartPhotoModeAsync(cameraParameters, OnPhotoModeStarted);
         }
 
@@ -72,7 +79,7 @@ namespace Assets.Scripts
             if (result.success)
             {
                 photoCaptureFrame.UploadImageDataToTexture(_targetTexture);
-
+                
                 var picture = _targetTexture.EncodeToJPG();
 
                 StartCoroutine(UploadPhoto(picture));
@@ -81,7 +88,7 @@ namespace Assets.Scripts
             }
         }
 
-        private static IEnumerator UploadPhoto(byte[] picture)
+        private IEnumerator UploadPhoto(byte[] picture)
         {
             if (!ConnectionManager.Instance.Pin.HasValue)
             {
@@ -90,7 +97,24 @@ namespace Assets.Scripts
 
             var url = string.Format(Resources.Constants.ImageUploadUrl, Resources.Constants.ApplicationUrl, ConnectionManager.Instance.Pin.Value, ConnectionManager.Instance.ParticipantOrder);
 
-            var www = new WWW(url, picture);
+            var upperLeftScreen = Camera.main.WorldToScreenPoint(UpperLeft.transform.position);
+            var upperRightScreen = Camera.main.WorldToScreenPoint(UpperRight.transform.position);
+            var bottomLeftScreen = Camera.main.WorldToScreenPoint(BottomLeft.transform.position);
+            var bottomRightScreen = Camera.main.WorldToScreenPoint(BottomRight.transform.position);
+
+            var headers = new Dictionary<string, string>
+            {
+                { "ulx", Mathf.Round(upperLeftScreen.x).ToString(CultureInfo.InvariantCulture) },
+                { "uly", Mathf.Round(upperLeftScreen.y).ToString(CultureInfo.InvariantCulture) },
+                { "urx", Mathf.Round(upperRightScreen.x).ToString(CultureInfo.InvariantCulture) },
+                { "ury", Mathf.Round(upperRightScreen.y).ToString(CultureInfo.InvariantCulture) },
+                { "blx", Mathf.Round(bottomLeftScreen.x).ToString(CultureInfo.InvariantCulture) },
+                { "bly", Mathf.Round(bottomLeftScreen.y).ToString(CultureInfo.InvariantCulture) },
+                { "brx", Mathf.Round(bottomRightScreen.x).ToString(CultureInfo.InvariantCulture) },
+                { "bry", Mathf.Round(bottomRightScreen.y).ToString(CultureInfo.InvariantCulture) }
+            };
+
+            var www = new WWW(url, picture, headers);
 
             yield return www;
         }
