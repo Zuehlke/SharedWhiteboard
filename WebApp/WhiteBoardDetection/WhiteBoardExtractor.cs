@@ -16,12 +16,12 @@
 //
 
 using System.Diagnostics;
-using System.Drawing;
+using System.Linq;
+using AForge;
 using AForge.Imaging.Filters;
 using Models.WhiteBoardDetection;
 using WhiteBoardDetection.Interfaces;
 using Image = AForge.Imaging.Image;
-
 
 namespace WhiteBoardDetection
 {
@@ -34,42 +34,50 @@ namespace WhiteBoardDetection
         private const string Template4ImagePath = "\\template4.jpg";
         private const string OutputImagePath = "\\output\\image.jpg";
         private const string DarkOutputImagePath = "\\output\\dark.jpg";
+        private const string QuadrilateralImagePath = "\\output\\quadri.jpg";
 
         private readonly ICornerFinder _cornerFinder;
         private readonly IImageRotator _imageRotator;
         private readonly DarkAreaExtractor _darkAreaExtractor;
 
-        public WhiteBoardExtractor(ICornerFinder cornerFinder, IImageRotator imageRotator, DarkAreaExtractor darkAreaExtractor)
+        public WhiteBoardExtractor(
+            ICornerFinder cornerFinder, 
+            IImageRotator imageRotator, 
+            DarkAreaExtractor darkAreaExtractor)
         {
             _cornerFinder = cornerFinder;
             _imageRotator = imageRotator;
             _darkAreaExtractor = darkAreaExtractor;
         }
         
-        public void DetectAndCrop(string storageFolder, string templatesFolder)
+        public void DetectAndCrop(
+            string storageFolder, 
+            string templatesFolder,
+            int upperLeftX,
+            int upperLeftY,
+            int upperRightX,
+            int upperRightY,
+            int bottomLeftX,
+            int bottomLeftY,
+            int bottomRightX,
+            int bottomRightY)
         {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
             
             var image = Image.FromFile($"{storageFolder}{InputImagePath}");
+            
+            var points = new[]
+            {
+                TransformFovPointToImagePoint(new IntPoint(upperLeftX, upperLeftY)),
+                TransformFovPointToImagePoint(new IntPoint(upperRightX, upperRightY)),
+                TransformFovPointToImagePoint(new IntPoint(bottomRightX, bottomRightY)),
+                TransformFovPointToImagePoint(new IntPoint(bottomLeftX, bottomLeftY))
+            };
 
-            var template1 = Image.FromFile($"{templatesFolder}{Template1ImagePath}");
-            var template2 = Image.FromFile($"{templatesFolder}{Template2ImagePath}");
-            var template3 = Image.FromFile($"{templatesFolder}{Template3ImagePath}");
-            var template4 = Image.FromFile($"{templatesFolder}{Template4ImagePath}");
-
-            var corners = _cornerFinder.Find(image, template1, template2, template3, template4);
-            var whiteBoardRectangle = new WhiteBoardRectangle(image, corners);
-
-            // TODO Right now, this does nothing. Fix it.
-            //image = _imageRotator.RotateImageAccordingToCorners(image, corners);
-
-            var cropFilter = new Crop(new Rectangle(whiteBoardRectangle.X, whiteBoardRectangle.Y, whiteBoardRectangle.Width, whiteBoardRectangle.Height));
-            image = cropFilter.Apply(image);
-
-            // HoloLens needs image that is upside-down
-            image = _imageRotator.RotateImage(image, 180);
-
+            var quadriliteralTransformationFilter = new QuadrilateralTransformation(points.ToList(), 600, 920);
+            image = quadriliteralTransformationFilter.Apply(image);
+           
             image.Save($"{storageFolder}{OutputImagePath}");
 
             var darkImage = _darkAreaExtractor.ExtractDarkAreas(image);
@@ -78,6 +86,18 @@ namespace WhiteBoardDetection
             stopwatch.Stop();
 
             Debug.WriteLine($"Whiteboard extraction took {stopwatch.ElapsedMilliseconds} ms.");
+        }
+
+        private static IntPoint TransformFovPointToImagePoint(IntPoint intPoint)
+        {
+            const int deltaX = 600;
+            const int deltaY = 300;
+            const double coefficient = 1.45;
+            const int imageHeight = 1152;
+
+            var newX = (int)(intPoint.X / coefficient + deltaX);
+            var newY = (int)(imageHeight - deltaY - intPoint.Y / coefficient); 
+            return new IntPoint(newX, newY);
         }
     }
 }

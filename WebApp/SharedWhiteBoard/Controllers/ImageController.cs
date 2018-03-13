@@ -16,6 +16,7 @@
 //
 
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -38,7 +39,9 @@ namespace SharedWhiteBoard.Controllers
 
         [HttpPost]
         [Route("ImageApi/Session/{sessionPin:long}/Image/{participantOrder}")]
-        public async Task<IHttpActionResult> UploadImage(long sessionPin, string participantOrder)
+        public async Task<IHttpActionResult> UploadImage(
+            long sessionPin, 
+            string participantOrder)
         {
             if (!SessionIsValid(sessionPin))
             {
@@ -56,6 +59,33 @@ namespace SharedWhiteBoard.Controllers
 
                 System.IO.File.WriteAllBytes(inputDirectoryFullPath, image);
 
+                var ulx = Request.Headers.GetValues("ulx").First();
+                var uly = Request.Headers.GetValues("uly").First();
+                var urx = Request.Headers.GetValues("urx").First();
+                var ury = Request.Headers.GetValues("ury").First();
+                var blx = Request.Headers.GetValues("blx").First();
+                var bly = Request.Headers.GetValues("bly").First();
+                var brx = Request.Headers.GetValues("brx").First();
+                var bry = Request.Headers.GetValues("bry").First();
+
+                var cornersLog = $@"
+{DateTime.Now}
+ulx = {ulx}, uly = {uly}
+urx = {urx}, ury = {ury}
+blx = {blx}, bly = {bly}
+brx = {brx}, bry = {bry}";
+
+                System.IO.File.WriteAllText($"{storageFolderPath}\\inputlog.txt", cornersLog);
+
+                var upperLeftX = int.Parse(ulx);
+                var upperLeftY = int.Parse(uly);
+                var upperRightX = int.Parse(urx);
+                var upperRightY = int.Parse(ury);
+                var bottomLeftX = int.Parse(blx);
+                var bottomLeftY = int.Parse(bly);
+                var bottomRightX = int.Parse(brx);
+                var bottomRightY = int.Parse(bry);
+
                 // TODO Use IoC
                 var imageRotator = new ImageRotator();
                 var whiteBoardExtractor = new WhiteBoardExtractor(
@@ -67,7 +97,17 @@ namespace SharedWhiteBoard.Controllers
                     new DarkAreaExtractor());
 
                 var templatesFolderPath = $"{storageFolderPath}\\{Resources.Resources.TemplatesFolder}";
-                whiteBoardExtractor.DetectAndCrop(participantStorageFolderPath, templatesFolderPath);
+                whiteBoardExtractor.DetectAndCrop(
+                    participantStorageFolderPath, 
+                    templatesFolderPath,
+                    upperLeftX,
+                    upperLeftY,
+                    upperRightX,
+                    upperRightY,
+                    bottomLeftX,
+                    bottomLeftY,
+                    bottomRightX,
+                    bottomRightY);
 
                 return Ok();
             }

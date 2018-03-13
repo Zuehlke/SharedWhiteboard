@@ -19,6 +19,16 @@ namespace WhiteBoardDetection.Interfaces
 {
     public interface IWhiteBoardExtractor
     {
-        void DetectAndCrop(string storageFolder, string templatesFolder);
+        void DetectAndCrop(
+            string storageFolder, 
+            string templatesFolder,
+            int upperLeftX,
+            int upperLeftY,
+            int upperRightX,
+            int upperRightY,
+            int bottomLeftX,
+            int bottomLeftY,
+            int bottomRightX,
+            int bottomRightY);
     }
 }
