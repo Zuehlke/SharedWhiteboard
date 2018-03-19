@@ -88,12 +88,7 @@ brx = {brx}, bry = {bry}";
 
                 // TODO Use IoC
                 var imageRotator = new ImageRotator();
-                var whiteBoardExtractor = new WhiteBoardExtractor(
-                    new CornerFinderAccordingToRectangles(
-                        new SimilarityChecker(), 
-                        imageRotator, 
-                        new RectangleFinder()), 
-                    imageRotator, 
+                var whiteBoardExtractor = new WhiteBoardExtractor(imageRotator, 
                     new DarkAreaExtractor());
 
                 var templatesFolderPath = $"{storageFolderPath}\\{Resources.Resources.TemplatesFolder}";
@@ -133,7 +128,7 @@ brx = {brx}, bry = {bry}";
                 return CreateBadRequestResponse(Resources.Resources.NotAllParticipantsJoinedSession);
             }
 
-            var filePath = GetOutputFilePath(participantOrder);
+            var filePath = GetOutputFilePath(participantOrder, sessionPin);
 
             return CreateResponseMessageFromFile(filePath);
         }
@@ -174,7 +169,7 @@ brx = {brx}, bry = {bry}";
                 return response;
             }
 
-            var filePath = GetDarkOutputFilePath(participantOrder);
+            var filePath = GetDarkOutputFilePath(participantOrder, sessionPin);
             
             return CreateResponseMessageFromFile(filePath);
         }
@@ -185,20 +180,18 @@ brx = {brx}, bry = {bry}";
             return session != null && session.IsActive && session.BothParticipantsJoined;
         }
 
-        private static string GetOutputFilePath(string participantOrder)
+        private static string GetOutputFilePath(string participantOrder, long sessionPin)
         {
             var outputFolderParentFolder = participantOrder == "A" ? "B" : "A";
-            var filePath = $"{AppDomain.CurrentDomain.BaseDirectory}\\{Resources.Resources.StorageFolder}\\{outputFolderParentFolder}\\{Resources.Resources.OutputFolder}\\image.jpg";
+            var filePath = $"{AppDomain.CurrentDomain.BaseDirectory}\\{Resources.Resources.StorageFolder}\\{sessionPin}\\{outputFolderParentFolder}\\{Resources.Resources.OutputFolder}\\image.jpg";
 
             return filePath;
         }
 
-        private static string GetDarkOutputFilePath(string participantOrder)
+        private static string GetDarkOutputFilePath(string participantOrder, long sessionPin)
         {
             var outputFolderParentFolder = participantOrder == "A" ? "B" : "A";
-            var filePath1 =
-                $"{AppDomain.CurrentDomain.BaseDirectory}\\{Resources.Resources.StorageFolder}\\{outputFolderParentFolder}\\{Resources.Resources.OutputFolder}\\dark.jpg";
-            var filePath = filePath1;
+            var filePath = $"{AppDomain.CurrentDomain.BaseDirectory}\\{Resources.Resources.StorageFolder}\\{sessionPin}\\{outputFolderParentFolder}\\{Resources.Resources.OutputFolder}\\dark.jpg";
             return filePath;
         }
     }

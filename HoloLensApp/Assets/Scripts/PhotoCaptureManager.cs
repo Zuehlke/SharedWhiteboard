@@ -59,8 +59,6 @@ namespace Assets.Scripts
                 pixelFormat = CapturePixelFormat.BGRA32
             };
 
-            UserOutputManager.ShowOutput(string.Format("w: {0}, h: {1}", cameraResolution.width, cameraResolution.height));
-
             captureobject.StartPhotoModeAsync(cameraParameters, OnPhotoModeStarted);
         }
 

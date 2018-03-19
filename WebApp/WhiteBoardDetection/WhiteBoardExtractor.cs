@@ -28,24 +28,14 @@ namespace WhiteBoardDetection
     public class WhiteBoardExtractor : IWhiteBoardExtractor
     {
         private const string InputImagePath = "\\input\\image.jpg";
-        private const string Template1ImagePath = "\\template1.jpg";
-        private const string Template2ImagePath = "\\template2.jpg";
-        private const string Template3ImagePath = "\\template3.jpg";
-        private const string Template4ImagePath = "\\template4.jpg";
         private const string OutputImagePath = "\\output\\image.jpg";
         private const string DarkOutputImagePath = "\\output\\dark.jpg";
-        private const string QuadrilateralImagePath = "\\output\\quadri.jpg";
 
-        private readonly ICornerFinder _cornerFinder;
         private readonly IImageRotator _imageRotator;
         private readonly DarkAreaExtractor _darkAreaExtractor;
 
-        public WhiteBoardExtractor(
-            ICornerFinder cornerFinder, 
-            IImageRotator imageRotator, 
-            DarkAreaExtractor darkAreaExtractor)
+        public WhiteBoardExtractor(IImageRotator imageRotator, DarkAreaExtractor darkAreaExtractor)
         {
-            _cornerFinder = cornerFinder;
             _imageRotator = imageRotator;
             _darkAreaExtractor = darkAreaExtractor;
         }
@@ -77,7 +67,9 @@ namespace WhiteBoardDetection
 
             var quadriliteralTransformationFilter = new QuadrilateralTransformation(points.ToList(), 600, 920);
             image = quadriliteralTransformationFilter.Apply(image);
-           
+
+            image = _imageRotator.RotateImage(image, 180);
+
             image.Save($"{storageFolder}{OutputImagePath}");
 
             var darkImage = _darkAreaExtractor.ExtractDarkAreas(image);
