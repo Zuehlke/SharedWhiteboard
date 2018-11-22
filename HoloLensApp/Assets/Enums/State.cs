@@ -2,6 +2,7 @@
 {
     public enum State
     {
+        Default,
         ChooseType,
         Positioning,
         Pairing,

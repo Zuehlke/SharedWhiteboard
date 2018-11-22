@@ -63,12 +63,12 @@ namespace Assets.Scripts
             gameObject.GetComponent<Text>().color = newColor;
         }
 
-        public void FadeIn(float fadingTimeInSeconds)
+        public void FadeIn(float fadingTimeInSeconds, float? desiredTransparency = null)
         {
             _fadeIn = true;
             _fadeOut = false;
 
-            _fadingPerSecond = _originalColor.a / fadingTimeInSeconds;
+            _fadingPerSecond = (desiredTransparency.HasValue ? desiredTransparency.Value : _originalColor.a) / fadingTimeInSeconds;
         }
 
         public void FadeOut(float fadingTimeInSeconds)

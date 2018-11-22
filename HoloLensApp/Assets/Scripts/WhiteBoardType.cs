@@ -29,6 +29,12 @@ namespace Assets.Scripts
 
         private void Start()
         {
+            if (StateManager.Instance.CurrentState != State.ChooseType)
+            {
+                HideChooseTypeDialog();
+                return;
+            }
+
             ShowChooseTypeDialog();
         }
 

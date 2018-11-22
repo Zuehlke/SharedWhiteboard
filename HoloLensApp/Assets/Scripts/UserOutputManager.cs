@@ -42,5 +42,12 @@ namespace Assets.Scripts
 
             OutputText.text = string.Empty;
         }
+
+        public void ShowPermanentOutput(string output)
+        {
+            OutputText.text = output;
+            OutputText.enabled = true;
+            OutputText.GetComponent<FadingObject>().FadeIn(2.5f, 1f);
+        }
     }
 }

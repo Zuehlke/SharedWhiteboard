@@ -90,10 +90,18 @@ namespace Assets.Scripts
 
             yield return www;
 
-            SwitchInputObjectsActiveState(false);
-            UserOutputManager.ShowOutput("Connected");
+            if (!string.IsNullOrEmpty(www.error))
+            {
+                UserOutputManager.ShowOutput("Error");
 
-            ParticipantOrder = ParticipantOrder.B;
+            }
+            else
+            {
+                SwitchInputObjectsActiveState(false);
+                UserOutputManager.ShowOutput("Connected");
+
+                ParticipantOrder = ParticipantOrder.B;
+            }
         }
 
         public void ShowPin()
@@ -112,6 +120,11 @@ namespace Assets.Scripts
         private void OnApplicationQuit()
         {
             EndSession();
+        }
+
+        public bool IsConnectedToInternet
+        {
+            get { return Application.internetReachability != NetworkReachability.NotReachable; }
         }
     }
 }

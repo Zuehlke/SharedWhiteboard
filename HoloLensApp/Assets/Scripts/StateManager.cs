@@ -30,7 +30,13 @@ namespace Assets.Scripts
         {
             base.Awake();
 
-		    CurrentState = State.ChooseType;
+            if (!ConnectionManager.Instance.IsConnectedToInternet)
+            {
+                UserOutputManager.Instance.ShowPermanentOutput("No internet connection. \r\nPlease connect to internet and restart application.");
+                return;
+            }
+
+            CurrentState = State.ChooseType;
             _previousState = null;
         }
 
@@ -128,5 +134,6 @@ namespace Assets.Scripts
             _previousState = CurrentState;
             CurrentState = nextState;
         }
+
     }
 }
