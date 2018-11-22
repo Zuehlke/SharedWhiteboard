@@ -24,6 +24,7 @@ namespace Assets.Scripts
     public class PositioningManager : Singleton<PositioningManager>
     {
         public GameObject WhiteBoard;
+        public GameObject DoneButton;
 
         public bool PositioningInProgress { get; private set; }
 
@@ -33,10 +34,24 @@ namespace Assets.Scripts
             Done();
         }
 
+        private void Update()
+        {
+            var tapToPlace = WhiteBoard.GetComponent<TapToPlace>();
+            if (tapToPlace != null && tapToPlace.enabled && !tapToPlace.IsBeingPlaced)
+            {
+                DoneButton.SetActive(true);
+            }
+            else
+            {
+                DoneButton.SetActive(false);
+            }
+        }
+
         public void Done()
         {
             SwitchPositioningEnabled(false);
             PositioningInProgress = false;
+            DoneButton.SetActive(false);
         }
 
         public void Position()

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloLensApp", "HoloLensApp.csproj", "{79E0DFCD-DE46-9D7E-E02B-294A71BF7AB2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloLensApp.Editor", "HoloLensApp.Editor.csproj", "{068C2FCB-EC62-692A-B9C7-60CE7426B8F1}"
