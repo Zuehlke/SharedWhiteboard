@@ -38,10 +38,11 @@ namespace Assets.Scripts
         public GameObject UpperRight;
         public GameObject BottomLeft;
         public GameObject BottomRight;
+        public Counter Counter;
 
         public void CapturePhoto()
         {
-            PhotoCapture.CreateAsync(false, OnPhotoCaptureCreated);
+            Counter.StartCountdown(() => PhotoCapture.CreateAsync(false, OnPhotoCaptureCreated));
         }
 
         private void OnPhotoCaptureCreated(PhotoCapture captureobject)

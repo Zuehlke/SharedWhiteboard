@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WSAPlayer:21</UnityBuildTarget>
     <UnityVersion>2017.1.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -387,6 +389,7 @@
     <Compile Include="Assets\HoloToolkit-Examples\SpatialUnderstanding\SpatialUnderstanding-FeatureOverview\Scripts\UI.cs" />
     <Compile Include="Assets\Resources\Constants.cs" />
     <Compile Include="Assets\Scripts\ConnectionManager.cs" />
+    <Compile Include="Assets\Scripts\Counter.cs" />
     <Compile Include="Assets\Scripts\FadingObject.cs" />
     <Compile Include="Assets\Scripts\HolographicKeyboardBehavior.cs" />
     <Compile Include="Assets\Scripts\PhotoCaptureManager.cs" />

@@ -17,13 +17,16 @@
 
 using Assets.Enums;
 using HoloToolkit.Unity;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class StateManager : Singleton<StateManager>
     {
         public State CurrentState { get; private set; }
-
+        public GameObject AdjustButton;
+        public GameObject ResizeButton;
+        public GameObject SendButton;
         private State? _previousState;
 
         protected override void Awake()
@@ -38,6 +41,9 @@ namespace Assets.Scripts
 
             CurrentState = State.ChooseType;
             _previousState = null;
+            AdjustButton.SetActive(false);
+            ResizeButton.SetActive(false);
+            SendButton.SetActive(false);
         }
 
         public void White()
@@ -133,6 +139,22 @@ namespace Assets.Scripts
         {
             _previousState = CurrentState;
             CurrentState = nextState;
+        }
+
+        private void Update()
+        {
+            if (CurrentState == State.Free)
+            {
+                AdjustButton.SetActive(true);
+                ResizeButton.SetActive(true);
+                SendButton.SetActive(true);
+            }
+            else
+            {
+                AdjustButton.SetActive(false);
+                ResizeButton.SetActive(false);
+                SendButton.SetActive(false);
+            }
         }
 
     }
