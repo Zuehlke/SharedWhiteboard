@@ -146,7 +146,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 a49424d98009839f6297c189e6c1353a Assembly-CSharp.dll:Assets.Scripts.PositioningManager
 5645d472525403b5344c650d3f68dd7b Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.ManualGazeControl
 ef555ddf7468f062559f9ce6ab4c299f Assembly-CSharp.dll:HoloToolkit.Unity.SpatialMapping.SurfaceMeshesToPlanes
-09fcba6c1b04a678d707182dbad23f27 Assembly-CSharp.dll:Assets.Scripts.PhotoCaptureManager
+bf309791eadf7605cb533d91742f56a7 Assembly-CSharp.dll:Assets.Scripts.PhotoCaptureManager
 2f1c57a639db8142cff5369f500187dc Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.Tests.TestButton
 eaa63172da4386e0f868cdbb0fbe8ac9 Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.Tests.ButtonObjectScaler
 03d014be1954cace3dbd71d3ced91c04 Assembly-CSharp.dll:.PlaneTargetGroup
@@ -164,7 +164,7 @@ b98be53d3161052a6717fb4ae6f9ff08 Assembly-CSharp.dll:HoloToolkit.Unity.InputModu
 cdeb02b400afb7c46046b99d63d2e7df Assembly-CSharp.dll:HoloToolkit.Unity.FpsDisplay
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.KeyboardManager
 dfa416d091c6a74c4e4ef8229469c6ec Assembly-CSharp.dll:HoloToolkit.Sharing.VoiceChat.MicrophoneTransmitter
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Assets.Scripts.StateManager
+955364a0f9ef5a647145f4562a1d9172 Assembly-CSharp.dll:Assets.Scripts.StateManager
 c1d3beef13724614797863e13091c51a Assembly-CSharp.dll:HoloToolkit.Unity.UAudioMiniManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:HoloToolkit.Unity.AudioSourcesReference
 060048163841f486acb147d2ead9eea2 Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.ButtonController
@@ -228,6 +228,7 @@ c1ac6462c82be12ebeffcf18f5562cce Assembly-CSharp.dll:HoloToolkit.Unity.NearPlane
 ce6c7e75053148ec4aa1b34a66396c1b Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.Tests.InputHandleCallbackFX
 944e77c5a749303cb0f26ffb94dfcbe5 Assembly-CSharp.dll:HoloToolkit.Examples.SpatialUnderstandingFeatureOverview.UI
 24ccda7d9768f21e49a1e5334c1761a6 Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.Tests.OnFocusEvent
+1c8c008ccf7c1af2d5317079ce201bae Assembly-CSharp.dll:Assets.Scripts.Counter
 5f856dd07092734f22f2b747c5250aaa Assembly-CSharp.dll:.TextToSpeechManagerTest
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
