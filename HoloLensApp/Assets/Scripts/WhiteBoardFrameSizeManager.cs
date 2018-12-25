@@ -58,6 +58,8 @@ namespace Assets.Scripts
 
         private void SwitchInputObjectsActiveState(GameObject inputObjects, bool activeState)
         {
+            inputObjects.SetActive(activeState);
+
             foreach (Transform child in inputObjects.transform)
             {
                 child.gameObject.SetActive(activeState);
